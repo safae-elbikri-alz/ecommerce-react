@@ -1,0 +1,6 @@
+export const LOGIN_USER = 'LOGIN_USER';
+export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
+export const SET_CURRENT_USER = 'SET_USER';
+export const SET_AUTHENTICATION = 'SET_AUTHENTICATION';
+export const LOGOUT_USER = 'LOGOUT_USER';
+export const SET_LOADING = 'SET_LOADING';

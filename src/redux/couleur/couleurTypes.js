@@ -1,0 +1,2 @@
+export const GET_COULEURS = 'GET_COULEURS'
+export const SET_COULEURS = 'SET_COULEURS'

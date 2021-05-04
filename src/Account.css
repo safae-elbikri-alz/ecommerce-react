@@ -1,0 +1,491 @@
+
+.hidden {
+
+    display:'none';
+}
+
+.sbmenu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .sbmenu-list li {
+    border-bottom: 1px solid var(--darkGray);
+    padding: 10px 0px 10px 20px;
+  }
+  .sbmenu-list li a {
+    text-decoration: none;
+    color: var(--mainBlack);
+    transition: var(--mainTransition);
+    /* text-transform: uppercase; */
+  }
+  .sbmenu-list li a:hover {
+    color: var(--deepGray);
+  }
+
+
+
+.card{
+     max-width: 1200px; 
+    width: 100%;
+    margin: auto;
+    margin-top: 2rem;
+    /* margin-left: 25%; */
+    font:  1.2em "Fira Sans", sans-serif;
+    /* font: bold 14px sans-serif; */
+    /* text-align: center; */
+}
+
+
+
+.nav{
+    /* margin:  auto;
+    position: relative; */
+    display: inline-block;
+    vertical-align: top;
+     margin-right: 40px; 
+    /*text-align: center; */
+    
+}
+
+
+.info{
+    /* margin:  auto;
+    position: relative; */
+    display: inline-block;
+    vertical-align: top;
+     margin-right: 40px; 
+    /*text-align: center; */
+}
+
+.edit{
+    /* margin:  auto;
+    position: relative; */
+    display: inline-block;
+    vertical-align: top;
+     margin-right: 40px; 
+    /*text-align: center; */
+}
+
+.commande{
+    /* margin:  auto;
+    position: relative; */
+    display: inline-block;
+    vertical-align: top;
+     margin-right: 40px; 
+    /*text-align: center; */
+}
+
+/* nav */
+.nav .form-white-background{
+    width: 380px;
+    height :400px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 60px 60px;
+    margin-bottom: 35px;
+}
+
+.nav .form-row{
+    text-align: left;
+    margin-bottom: 23px;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav .form-title-row{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.nav h1{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #4c565e;
+    font-size: 30px;
+    padding: 0 20px 15px;
+    border-bottom: 2px solid #EFDCE7;
+    margin: 0;
+}
+
+
+/*info */
+
+.info .form-white-background{
+    width: 730px;
+    height :600px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 60px 60px;
+    margin-bottom: 35px;
+}
+
+.info .form-row{
+    text-align: left;
+    margin-bottom: 23px;
+    font-size: 20px;
+    margin-left: 50px;
+}
+
+.info .form-title-row{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.info h1{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #4c565e;
+    font-size: 30px;
+    padding: 0 20px 15px;
+    border-bottom: 2px solid #EFDCE7;
+    margin: 0;
+}
+
+.info .form-row > label span{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #5f5f5f;
+    width: 130px;
+    text-align: center;
+    padding-right: 10px;
+}
+
+/*edit */
+
+.edit .form-white-background{
+    width: 730px;
+    height :1050px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 60px 60px;
+    margin-bottom: 35px;
+}
+
+.edit .form-row{
+    text-align: center;
+    margin-bottom: 23px;
+    font-size: 20px;
+}
+
+.edit .form-title-row{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.edit h1{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #4c565e;
+    font-size: 30px;
+    padding: 0 20px 15px;
+    border-bottom: 2px solid #EFDCE7;
+    margin: 0;
+}
+
+.edit .form-row > label span{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #5f5f5f;
+    width: 170px;
+    text-align: center;
+    padding-right: 10px;
+    
+}
+
+.edit input{
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    width: 250px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 12px 18px;
+    border: 1px solid #dbdbdb;
+}
+
+.edit button{
+    display: block;
+    margin-right: 20px;
+    margin-top: 10px;
+    border-radius: 2px;
+    background-color:  #EFDCE7;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 15px 35px;
+    border: 0;
+     margin: 55px auto 0; 
+    cursor: pointer;
+   
+}
+
+
+.edit select{
+    
+    width: 250px;
+    height: 41px;
+    border: 1px solid #dbdbdb;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    
+}
+
+
+/* commande */
+.commande .form-white-background{
+    width: 730px;
+    height :600px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 60px 60px;
+    margin-bottom: 35px;
+}
+
+.commande .form-row{
+    text-align: left;
+    margin-bottom: 23px;
+    font-size: 20px;
+}
+
+.commande .form-title-row{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.commande h1{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #4c565e;
+    font-size: 30px;
+    padding: 0 20px 15px;
+    border-bottom: 2px solid #EFDCE7;
+    margin: 0;
+}
+
+.commande p{
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+.info .form-row > label span{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #5f5f5f;
+    width: 130px;
+    text-align: center;
+    padding-right: 10px;
+}
+
+.info input{
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    width: 230px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 12px 18px;
+    border: 1px solid #dbdbdb;
+}
+
+.info select{
+    
+    width: 230px;
+    height: 41px;
+    border: 1px solid #dbdbdb;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    
+}
+
+.info .form-checkbox input{
+    margin-left: 128px;
+    margin-right: 10px;
+    width: auto;
+    vertical-align: top;
+}
+
+.info .form-row .form-checkbox span{
+    font-size: 12px;
+    font-weight: normal;
+    display: inline-block;
+    text-align: left;
+    width: 220px;
+    margin: 0;
+}
+
+.info .form-checkbox span a{
+    text-decoration: none;
+    color:  #6caee0;
+}
+
+.info button{
+    display: block;
+    border-radius: 2px;
+    background-color:  #EFDCE7;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 15px 35px;
+    border: 0;
+    margin: 55px auto 0;
+    cursor: pointer;
+}
+
+.info .form-log-in-with-existing{
+    text-decoration: none;
+    padding: 4px 8px;
+    font-weight: normal;
+    color: #e679b8;
+    /* background-color: #EFDCE7; */
+}
+
+/* .info:after{
+    content: 'OR';
+    position: absolute;
+    bottom: 330px;
+    right: -100px;
+
+    border-radius: 50%;
+    background-color: #edeca5;
+    width: 50px;
+    height: 50px;
+    color: #93923b;
+    font-size: 17px;
+    line-height: 50px;
+} */
+
+.form-sign-in-with-social{
+    display: inline-block;
+    max-width: 180px;
+    box-sizing: border-box;
+    vertical-align: top;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.form-sign-in-with-social .form-title-row{
+    margin-bottom: 50px;
+}
+
+.form-sign-in-with-social .form-title{
+    box-sizing: border-box;
+    color:  #4c565e;
+    font-size: 24px;
+    padding: 15px 20px;
+    border-bottom: 2px solid #6caee0;
+}
+
+.form-sign-in-with-social .form-google-button{
+    color:  #ffffff;
+    display: block;
+    width: 145px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+    background-color:  rgba(222, 110, 60, 0.9);
+    box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 2px;
+    margin: 8px auto;
+    text-decoration: none;
+}
+
+.form-sign-in-with-social .form-facebook-button{
+    color:  #ffffff;
+    display: block;
+    width: 145px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+    background-color:  rgba(75, 136, 194, 0.9);
+    box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 2px;
+    margin: 8px auto;
+    text-decoration: none;
+}
+
+.form-sign-in-with-social .form-twitter-button{
+    color:  #ffffff;
+    display: block;
+    width: 145px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+    background-color:  rgba(123, 195, 226, 0.9);
+    box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 2px;
+    margin: 8px auto;
+    text-decoration: none;
+}
+
+/*	Making the form responsive. Remove these media queries
+    if you don't need the form to work on mobile devices. */
+
+@media (max-width: 900px) {
+
+    .card{
+        margin: 20px auto;
+    }
+
+    .info{
+        position: relative;
+        display: block;
+        margin: 0;
+    }
+
+    .info .form-white-background{
+        margin: 0 auto 32px;
+    }
+
+    .info:after{
+        bottom: -80px;
+        left: 50%;
+        margin-left: -25px;
+    }
+
+    .form-sign-in-with-social {
+        margin-top: 105px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .info .form-white-background{
+        width: 300px;
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .info .form-row > label span{
+        display: block;
+        text-align: left;
+        padding: 0 0 10px;
+    }
+
+    .info input{
+        display: block;
+        margin: 0 auto;
+    }
+
+    .info .form-checkbox input{
+        display: inline-block;
+        margin-left: 0;
+    }
+
+    .info .form-checkbox span{
+        width: 200px !important;
+    }
+
+    .info:after{
+        bottom: -80px;
+        left: 50%;
+        margin-left: -25px;
+    }
+
+}
