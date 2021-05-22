@@ -16,12 +16,12 @@ function Checkout(){
     return (
         <div className="checkout-page">
             <div className="checkout-banner">
-                <h1>Glamira - Jewelry Store Checkout</h1>
+                <h1>Tout Destock</h1>
             </div>
             <div className="checkout-summary"><CartSummary shipping={shipping} payement={payement} step={step} /></div>
             <div className="checkout-info">
             <div className="checkout-banner-inside">
-                <h1>Glamira - Jewelry Store Checkout</h1>
+                <h1>Tout Destock</h1>
             </div>
                 <CheckoutInfo 
                     payement={payement} 

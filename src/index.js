@@ -6,6 +6,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import axios from "axios"
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import 'moment/locale/fr';
 
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_API || "http://localhost:8082";
 axios.defaults.headers['Content-Type'] = 'application/json; charset=utf-8';

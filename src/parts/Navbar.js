@@ -113,13 +113,6 @@ function Navbar() {
                         <h1 style={{ fontFamily: "serif", fontSize: '30px' }}><Link to="/" style={{color: 'black', textDecoration: 'none'}}>Tout Destock</Link></h1>
                     </div>
                     <div className="menu-right">
-                        {/* <h4>
-                            {currentUser.nom} {currentUser.prenom}
-                        </h4>
-                        <button
-                            className="icon-btn menu-right-user-icon"
-                            onClick={authenticated ? () => history.push("/account") : openLoginOverlay}><AiOutlineUser /></button>
-                         */}
                         
                         <button onClick={authenticated ? () => onClick() : openLoginOverlay } className="menu-trigger"><AiOutlineUser/> </button>
                     <nav
@@ -133,7 +126,7 @@ function Navbar() {
                             <li>
                             <Link to="/account">Mon compte</Link>
                             </li>
-                            {authenticated && <li onClick={logout}><Link to="#">Se deconnecter</Link></li>}
+                            {authenticated && <li onClick={logout}><Link to="#">Se déconnecter</Link></li>}
                             
                         </ul>
         </nav>

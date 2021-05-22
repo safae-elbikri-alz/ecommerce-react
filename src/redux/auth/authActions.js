@@ -34,14 +34,16 @@ export const setCurrentUser = (payload) => {
     }
 }
 
-export const fetchCurrentUser = () => {
+export const fetchCurrentUser = (success, error) => {
     return (dispatch) => {
         axios.get("/auth/current")
             .then(response => {
                 dispatch(setCurrentUser(response.data));
+                success && success();
             })
             .catch(error => {
                 console.log(error);
+                error && error();
             })
     }
 }
@@ -65,3 +67,26 @@ export const setLoading = (loading) => {
         loading: loading
     }
 }
+
+export const registerUser = (formData) => {
+    console.log(formData);
+    return (dispatch) => axios.post('/user/register', formData);
+};
+
+export const updateUser = (id, formData, success, error) => {
+    return (dispatch) => {
+        axios.put(`/user/update/${id}`, formData)
+            .then(res => {
+                dispatch(fetchCurrentUser(success, error));
+            })
+            .catch(err => error());
+    };
+};
+
+export const changePassword = (id, formData, success, error) => {
+    return (dispatch) => {
+        axios.put(`/user/update/${id}/password`, formData)
+            .then(res => success())
+            .catch(err => error());
+    };
+};

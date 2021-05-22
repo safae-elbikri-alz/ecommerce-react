@@ -3,10 +3,14 @@ import {Link} from 'react-router-dom'
 import {FaTimes , FaCheck} from 'react-icons/fa'
 import {DefaultButton , OutlineButton} from '../parts/Button'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 function CartPopup({singleProduct}) {
     const checkoutBtn = document.querySelector('.checkout-btn')
     const [centerImage, setCenterImage] = useState('');
+    const cart = useSelector(state => state.panier.cart);
+    const cartCount = cart.length;
+    const cartTotal = cart.map(item => item.prixReel * item.count).reduce((a,b) => a+b, 0);
                         
     useEffect(() => {
         if(singleProduct){
@@ -19,7 +23,7 @@ function CartPopup({singleProduct}) {
         overlay.classList.add('hidden')
     }
 
-    let{id,name,price,count,cartCount,cartTotal} = {id:singleProduct.id,name:singleProduct.nom,price:singleProduct.prixReel,count:singleProduct.count || 1,cartCount:0,cartTotal:0}
+    let{id,name,price,count} = {id:singleProduct.id,name:singleProduct.nom,price:singleProduct.prixReel,count:singleProduct.count || 1}
 
     return (
         <div className="cart-popup-container cart-popup">
@@ -32,8 +36,8 @@ function CartPopup({singleProduct}) {
                <p className="cart-total">LE TOTAL: <span>$ {price * count}</span></p>
            </div>
            <div className="cart-right-container">
-               <p>There are <span>{cartCount}</span> Nombre de produits dans votre panier</p>
-               <p className="cart-total">LE TOTAL DU PANIER: <span>${}</span></p>
+               <p>Il y'a <span>{cartCount}</span> produits dans votre panier</p>
+               <p className="cart-total">LE TOTAL DU PANIER: <span>${cartTotal}</span></p>
                <OutlineButton onClick={(e)=>closecart(e)}><Link to="/shop">Continuer votre achat</Link></OutlineButton>
                 <DefaultButton><Link to="/cart">Aller au panier</Link></DefaultButton>
             </div>

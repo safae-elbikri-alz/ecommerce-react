@@ -5,7 +5,7 @@ import ProductReducer from "./product/productReducers";
 import catReducer from "./categorie/categorieReducers";
 import couleurReducer from "./couleur/couleurReducers";
 import PanierReducer from "./panier/PanierReducers";
-import CheckoutReducer from './checkout/checkoutReducer';
+import commandeReducer from "./commande/commandeReducer";
 
 const rootReducer = combineReducers({
     auth : authReducer,
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     categorie : catReducer,
     couleur : couleurReducer,
     panier : PanierReducer,
-    checkout : CheckoutReducer
+    commande : commandeReducer
 })
 
 export default rootReducer;

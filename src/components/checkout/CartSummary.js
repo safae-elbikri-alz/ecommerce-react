@@ -11,7 +11,7 @@ function CartSummary({shipping, payement, step}){
     const dispatch = useDispatch();
     const [isMenuOpen, setOpenMenu] = useState(false);
     const cart = useSelector(state => state.panier.cart);
-    const cartTotal = cart.map(item => item.prixReel).reduce((a,b) => a+b, 0);
+    const cartTotal = cart.map(item => item.prixReel * item.count).reduce((a,b) => a+b, 0);
     const total = Number((( cartTotal + shipping.prix ).toFixed(2)));
 
     const toggleMenu = () =>{
@@ -28,13 +28,20 @@ function CartSummary({shipping, payement, step}){
     }
 
     const cartItems = cart.map(item =>{
+        const couleur = item.couleurs ? item.couleurs.filter(c => c.id === item.couleur) : null;
         return(
             <tr key={item.id} className="cart-summary-row">
                 <td className="cart-summary-small-img">
                     <span className="count-summary-item">{item.count}</span>
                     <img src={`${axios.defaults.baseURL}/files/produits/${item.photo}`} alt="cart item"/>
                 </td>                
-                <td className="cart-summary-small-name">{item.nom}</td>
+                <td className="cart-summary-small-name">
+                    {
+                        couleur && couleur.length > 0 &&
+                        <span className="color-summary-item">{couleur[0].nom}</span> 
+                    }
+                    {` ${item.nom}`}
+                </td>
                 <td>{item.prixReel * item.count}€</td>
             </tr>
         )

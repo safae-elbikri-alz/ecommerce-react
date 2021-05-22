@@ -4,13 +4,14 @@ import CartPopup from '../components/CartPopup'
 import QuickView from '../components/QuickView'
 import { useDispatch, useSelector } from 'react-redux'
 import {getProducts} from '../redux/product/productActions'
+import { addToCart } from '../redux/panier/PanierActions'
 
 function FeaturedProducts() {
 
     const dispatch = useDispatch();
     const productList = useSelector(state=>state.product.sortedProducts);
-    const featuredProduct = productList.filter(product=>product.status === 1);
-    const [singleProduct, setSingleProduct] = useState({});
+    const [singleProduct, setSingleProduct] = useState(null);
+    const [featuredProduct, setFeaturedProducts] = useState([]);
 
     const quickView = (product) => {
         setSingleProduct(product);
@@ -22,13 +23,24 @@ function FeaturedProducts() {
         setSingleProduct(product);
         const overlay = document.querySelector('.cart-overlay')
         overlay.classList.remove('hidden')
-        //this.addtocart(id)
-        //dispatch(addToCart(product.id))
+        const cartItem = {
+            id: product.id,
+            count: product.count || 1,
+            couleur: product.couleur || 0,
+            prixReel: product.prixReel,
+            photo: product.photo,
+            nom: product.nom
+        }
+        dispatch(addToCart(cartItem)); 
     }
 
     useEffect(() => {
         dispatch(getProducts(0,20));
     },[]);
+
+    useEffect(() => {
+        setFeaturedProducts(productList.filter(product=>product.status === 1));
+    }, [productList]);
 
     return (
         <>
@@ -47,11 +59,17 @@ function FeaturedProducts() {
                 }
             </div>
             <div className="cart-overlay hidden overlay">
-                <CartPopup singleProduct={singleProduct}/>
+                {
+                    singleProduct &&
+                    <CartPopup singleProduct={singleProduct}/>
+                }
             </div>
 
             <div className="quick-view-overlay hidden overlay">
-                <QuickView singleProduct={singleProduct} />
+                {
+                    singleProduct && 
+                    <QuickView singleProduct={singleProduct} />
+                }
             </div>
         </>
     )

@@ -1,8 +1,5 @@
 import React from 'react'
 import {StyledHero} from '../parts/StyledHero'
-import about1 from '../images/about1.jpg'
-import about2 from '../images/about2.jpg'
-import about3 from '../images/about3.jpg'
 
 function Conditions() {
     return (

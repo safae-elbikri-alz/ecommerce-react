@@ -81,7 +81,6 @@ function QuickView({singleProduct, openModal}) {
                     </div>
                     <p className="pt-1 pb-1">{description}</p>
                         <div className="row quickview-row">
-                            <h4>{quantite} items disponible</h4>
                             <Button className={incart ? "no-margin btn-disabled" : "no-margin"} onClick={(e) => handleAddToCart(e)} disabled={incart}>
                                 {incart? "Dans votre panier" : "Ajouter au panier"}
                             </Button>

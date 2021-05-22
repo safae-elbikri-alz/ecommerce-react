@@ -36,7 +36,7 @@ nav {
   padding: 1em;
   height: 60px;
   position: fixed;
-  width: 97%;
+  width: 99%;
   transition: var(--mainTransition);
   z-index: 15;
 }
@@ -761,11 +761,14 @@ nav {
 }
 .mainImg img {
   width: 100%;
-  height: 260px;
 }
 .album-img {
   width: 100px;
   margin-bottom: 0.5em;
+}
+.product-color-selector{
+  width: 100%;
+  border: none;
 }
 .detail-detail-container {
   padding: 0 1.5em;
@@ -1533,6 +1536,17 @@ input:focus {
   color: white;
   font-size: 0.9em;
 }
+.color-summary-item {
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  background: var(--lightBlack);
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  font-size: 0.9em;
+  padding: 0px 5px;
+}
 .checkout-banner-inside {
   display: none;
 }
@@ -1628,6 +1642,7 @@ input:focus {
 }
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 /* Track */
@@ -2132,4 +2147,28 @@ select::-ms-expand {
 
 .credit-card-form .FormCol {
   width: 48%;
+}
+
+.spinning-icon {
+  animation-name: spin-icon;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+  /* transform: rotate(3deg); */
+   /* transform: rotate(0.3rad);/ */
+   /* transform: rotate(3grad); */ 
+   /* transform: rotate(.03turn);  */
+}
+
+@keyframes spin-icon {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.required{
+  color: red;
 }

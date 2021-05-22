@@ -13,7 +13,6 @@ export default function ShippingInfo({contactInfo,stepBack,shippingMethod,select
     }
 
     useEffect(() => { 
-        console.log(selectedShipping);
         axios.get('/shipping')
             .then(res => {
                 if(!selectedShipping){
@@ -27,14 +26,16 @@ export default function ShippingInfo({contactInfo,stepBack,shippingMethod,select
                 console.log(err);
             })
     }, []);
+
+    
     return (
         <div>
-            <h3 className="contact-form-header">Shipping information</h3>
+            <h3 className="contact-form-header">Information de livraison</h3>
             <div className="shipping-top-box">
-                <span className="shipping-title">Contact</span><span>{contactInfo.email}</span><span className="changeBtn" onClick={stepBack}>Change</span>
-                <span className="shipping-title">Ship to</span><span>{fullAddress}</span><span className="changeBtn" onClick={stepBack}>Change</span>
+                <span className="shipping-title">Contact</span><span>{contactInfo.email}</span><span className="changeBtn" onClick={stepBack}>Changer</span>
+                <span className="shipping-title">Livré à</span><span>{fullAddress}</span><span className="changeBtn" onClick={stepBack}>Changer</span>
             </div>
-            <h3 className="contact-form-header">Shipping method</h3>
+            <h3 className="contact-form-header">Méthodes de livraison</h3>
             <div className="shipping-method-box" style={{display: "flex", flexWrap: "wrap"}}>
                 {
                     shipping.map(item => (
@@ -43,7 +44,7 @@ export default function ShippingInfo({contactInfo,stepBack,shippingMethod,select
                                 <input type="radio" name="shippingmethod" onChange={()=>shippingMethod(item)} checked={isChecked(item.id)}/>
                                 <label>{item.nom}</label>
                             </div>
-                            <p>${item.prix}</p>
+                            <p>{item.prix}€</p>
                         </div>
                     ))
                 }

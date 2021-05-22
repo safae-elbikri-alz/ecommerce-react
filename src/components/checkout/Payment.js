@@ -14,22 +14,14 @@ function Payment(props){
 
     return (
         <div>
-            <h3 className="contact-form-header">Payement</h3>
+            <h3 className="contact-form-header">Paiement</h3>
             <div className="shipping-top-box payment-top-box">
-                <span className="shipping-title">Contact</span><span>{contactInfo.email}</span><span className="changeBtn" onClick={stepBack}>Change</span>
-                <span className="shipping-title">Ship to</span><span>{fullAddress}</span><span className="changeBtn" onClick={stepBack}>Change</span>
-                <span className="shipping-title">Method</span><span>{props.shipping.nom} <b>${props.shipping.prix}</b></span><span></span>
+                <span className="shipping-title">Contact</span><span>{contactInfo.email}</span><span className="changeBtn" onClick={stepBack}>Changer</span>
+                <span className="shipping-title">Livré à</span><span>{fullAddress}</span><span className="changeBtn" onClick={stepBack}>Changer</span>
+                <span className="shipping-title">Méthode</span><span>{props.shipping.nom} <b>${props.shipping.prix}</b></span><span></span>
             </div>
-            {/* <h3 className="contact-form-header">Total</h3>
-            <p>${cartTotal} + ${props.shipping.prix} = ${total}</p> */}
             <h4 className="contact-form-header">Méthodes de payement</h4>
             <div>
-                {/* <PaypalButton 
-                    total={cartTotal}
-                    //change to total later
-                    // history={window.location.pathname}
-                />
-                <BlueButton onClick={handleClick}>Passer à la caisse</BlueButton> */}
                 <div className="form-check" style={{display: "flex", flexWrap: "wrap", alignItems: "center"}}>
                     <input
                         style={{marginTop: "0", marginRight: "25px"}}

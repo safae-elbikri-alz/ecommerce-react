@@ -1,4 +1,4 @@
-import { ADD_TO_CART, INCREMENT, DECREMENT, REMOVE_ITEM_FROM_PANIER,CLEAR_PANIER} from "./PanierTypes";
+import { ADD_TO_CART, INCREMENT, DECREMENT, REMOVE_ITEM_FROM_PANIER,CLEAR_PANIER, CHANGE_COLOR} from "./PanierTypes";
 
 const initCart = JSON.parse(localStorage.getItem('cart') || JSON.stringify([]));
 
@@ -13,6 +13,8 @@ const PanierReducer = (state = initial,action)=>{
             return addToCart(state, action.payload);
         case REMOVE_ITEM_FROM_PANIER:
             return removeFromCart(state, action.id);
+        case CHANGE_COLOR:
+            return changeColor(state, action.id, action.color);
         case INCREMENT:
             return increment(state, action.id);
         case DECREMENT:
@@ -60,6 +62,24 @@ const clearCart = (state)=>{
         ...state,
         cart : [],
         countPanier : 0, 
+    }
+}
+
+const changeColor = (state, id, color) => {
+    let cartLocalStorage = JSON.parse(localStorage.getItem('cart') || JSON.stringify([]));
+    cartLocalStorage = cartLocalStorage.map(item => {
+        if(item.id === id){
+            item.couleur = color;
+        }
+
+        return item;
+    });
+
+    localStorage.setItem('cart', JSON.stringify(cartLocalStorage));
+    
+    return {
+        ...state,
+        cart: cartLocalStorage
     }
 }
 

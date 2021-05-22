@@ -5,7 +5,6 @@ import {FaFacebookF, FaInstagram, FaLocationArrow, FaPhoneAlt,FaEnvelope} from '
 export default function Footer() {
     
     return (
-       // <div className={fullheightpage ? 'hidden footer-container': 'footer-container'}>
        <div className= "footer-container">
             <section className="footer-top">
                 <div className="footer-single">
@@ -21,6 +20,7 @@ export default function Footer() {
                     <h3>Informations</h3>
                         <Link to="/conditions">Termes et conditions </Link>
                         <Link to="/Terms">Politique de confidentialité</Link>
+                        <Link to="/mentionsLegal">Mentions Légal</Link>
                         <Link to="/about">A propos</Link>
                     </div>
                     <div className="footer-top-menu">

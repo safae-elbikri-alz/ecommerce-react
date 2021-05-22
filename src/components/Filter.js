@@ -52,7 +52,6 @@ function Filter(){
             allActives.forEach(item => item.classList.remove('active'))
             dispatch(getProducts());
         }
-
         getSiblings(target).map(item => item.classList.remove('active'))
         AllBtn.classList.remove('active')
         target.classList.add('active')
@@ -113,7 +112,7 @@ function Filter(){
             </div>
             <div className="widget-section">
                 <div className="widget-title">
-                    <h3>Prices</h3>
+                    <h3>Prix</h3>
                 </div>
                 <div className="widget-filter-list">                    
                   {pricesList} 

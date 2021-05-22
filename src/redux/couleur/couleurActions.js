@@ -6,7 +6,6 @@ export const getCouleurs = ()  => {
   return (dispatch)=>{
     axios.get('/couleur/couleurs')
         .then((response)=>{
-            console.log(response.data);
             dispatch(setCouleur(response.data));
         })
         .catch((error)=>{

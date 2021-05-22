@@ -1,4 +1,4 @@
-import { ADD_TO_CART,INCREMENT,DECREMENT,CLEAR_PANIER,REMOVE_ITEM_FROM_PANIER } from "./PanierTypes"
+import { ADD_TO_CART,INCREMENT,DECREMENT,CLEAR_PANIER,REMOVE_ITEM_FROM_PANIER, CHANGE_COLOR } from "./PanierTypes"
 
 
 
@@ -10,6 +10,13 @@ export const addToCart = (cartItem)=>{
     };
 };
 
+export const changeColor = (id, color) => {
+    return {
+        type: CHANGE_COLOR,
+        id: id,
+        color: color
+    }
+}
 
 export const increment = (id)=>{
     return {

@@ -17,7 +17,6 @@
     text-decoration: none;
     color: var(--mainBlack);
     transition: var(--mainTransition);
-    /* text-transform: uppercase; */
   }
   .sbmenu-list li a:hover {
     color: var(--deepGray);
@@ -114,7 +113,7 @@
 
 .info .form-white-background{
     width: 730px;
-    height :600px;
+    /* height :600px; */
     box-sizing: border-box;
     background-color: #FFFFFF;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -157,7 +156,7 @@
 
 .edit .form-white-background{
     width: 730px;
-    height :1050px;
+    /* height :1050px; */
     box-sizing: border-box;
     background-color: #FFFFFF;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -205,12 +204,24 @@
     border: 1px solid #dbdbdb;
 }
 
-.edit button{
+.edit .disabled-text-input {
+    background-color: #FAFAFA;
+    font-size: 13.33px;
+    text-align: left;
+    color:  #5f5f5f;
+    width: calc(250px - 18*2px);
+    display: inline-block;
+    padding: 12px 18px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    border: 1px solid #dbdbdb;
+}
+
+.edit .editBtn{
     display: block;
     margin-right: 20px;
     margin-top: 10px;
     border-radius: 2px;
-    background-color:  #EFDCE7;
+    background-color:  #c794b2;
     color: #ffffff;
     font-weight: bold;
     box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
@@ -223,7 +234,7 @@
 
 
 .edit select{
-    
+    padding: 0px 18px;
     width: 250px;
     height: 41px;
     border: 1px solid #dbdbdb;
@@ -235,7 +246,7 @@
 /* commande */
 .commande .form-white-background{
     width: 730px;
-    height :600px;
+    /* height: 650px; */
     box-sizing: border-box;
     background-color: #FFFFFF;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -264,11 +275,11 @@
     margin: 0;
 }
 
-.commande p{
-    text-align: center;
+.commandes-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-
-
 
 
 
@@ -295,7 +306,7 @@
 }
 
 .info select{
-    
+    padding: 0px 18px;
     width: 230px;
     height: 41px;
     border: 1px solid #dbdbdb;
@@ -324,10 +335,10 @@
     color:  #6caee0;
 }
 
-.info button{
+.info .infoBtn{
     display: block;
     border-radius: 2px;
-    background-color:  #EFDCE7;
+    background-color:  #c794b2;
     color: #ffffff;
     font-weight: bold;
     box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);

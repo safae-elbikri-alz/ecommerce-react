@@ -4,10 +4,19 @@ import ShippingInfo from './ShippingInfo'
 import Payment from './Payment'
 import BreadCrumbs from './BreadCrumbs'
 import CheckoutNavigation from './CheckoutNavigation'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearCurrentCommande, createCommande, setCurrentCommande } from '../../redux/commande/commandeActions'
+import { useHistory } from 'react-router'
+import { clearPanier } from '../../redux/panier/PanierActions'
 
 
 
 function CheckoutInfo({payement, setPayement, shipping, setShipping, step, setStep}){
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const commande = useSelector(state => state.commande.request);
+    const userId = useSelector(state => state.auth.user.id);
+    const cart = useSelector(state => state.panier.cart);
     const [state, setState] = useState({
         province:'',
         pays: {
@@ -46,15 +55,15 @@ function CheckoutInfo({payement, setPayement, shipping, setShipping, step, setSt
 
     const updateState = (e)=>{
         const name = Object.keys(e)[0];
-        // let name = e.target.name
-        // let value = e.target.value
-        // const type = e.target.type
-        // value = type === 'checkbox' ? e.target.checked : value
-        if(name === "payement") setPayement(e.payement);
-        setState({
-            ...state,
-            ...e
-        })
+        if(name === "payement"){
+            setPayement(e.payement);
+        }
+        else{
+            setState({
+                ...state,
+                ...e
+            });
+        }
     }
 
     const updateList = (name,value)=>{
@@ -117,13 +126,44 @@ function CheckoutInfo({payement, setPayement, shipping, setShipping, step, setSt
         allSelects.forEach(item => item.addEventListener('change',()=> validateField(item)))
     }, [])
 
+    useEffect(() => {
+        let newCommande = {
+            ...commande,
+            ...state,
+            idPays: parseInt(state.pays.id),
+            idClient: parseInt(userId),
+            idShipping: parseInt(shipping.id),
+            produits: cart.map(item => ({idProduit: item.id, quantite: item.count, idCouleur: item.couleur}))
+        };
+        delete newCommande.pays;
+        dispatch(setCurrentCommande(newCommande));
+    }, [state, shipping, cart]);
+
+    useEffect(() => {
+        if(commande.paid){
+            dispatch(createCommande(commande))
+                .then(res => {
+                    dispatch(setCurrentCommande({
+                        ...commande,
+                        paid: false
+                    }));
+                    history.push(`/account`);
+                    dispatch(clearCurrentCommande());
+                    dispatch(clearPanier());
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+    }, [commande]);
+
     switch (step) {
         case 1:
             return(
                 <>
                     <BreadCrumbs step={step} changeStep={changeStep}/>
                     <ContactInfo updateState={updateState} updateList={updateList} inputInfo={state}/>
-                    <CheckoutNavigation navigate={navigate} btnText='Continue to shopping'/>
+                    <CheckoutNavigation navigate={navigate} btnText='Continue votre achat'/>
                 </>
             )
         case 2:
@@ -131,7 +171,7 @@ function CheckoutInfo({payement, setPayement, shipping, setShipping, step, setSt
                 <>
                     <BreadCrumbs step={step} changeStep={changeStep}/>
                     <ShippingInfo contactInfo={state} stepBack={stepBack} shippingMethod={shippingMethod} selectedShipping={shipping.id} />
-                    <CheckoutNavigation navigate={navigate} btnText='Continue to payment'/>
+                    <CheckoutNavigation navigate={navigate} btnText='Continuer votre paiement'/>
                 </>
             )
         case 3:

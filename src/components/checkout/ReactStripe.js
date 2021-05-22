@@ -10,22 +10,25 @@ import {
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { BlueButton } from "../../parts/Button";
-import { useSelector } from "react-redux";
-import userEvent from "@testing-library/user-event";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { setCurrentCommande } from "../../redux/commande/commandeActions";
 
 const CreditCardForm = ({shipping}) => {
+    const dispatch = useDispatch();
+    const history = useHistory();
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState(null);
     const [cardComplete, setCardComplete] = useState(false);
     const [processing, setProcessing] = useState(false);
+    const commande = useSelector(state => state.commande.request);
     const cart = useSelector(state => state.panier.cart);
-    const cartTotal = cart.map(item => item.prixReel).reduce((a,b) => a+b, 0);
+    const cartTotal = cart.map(item => item.prixReel * item.count).reduce((a,b) => a+b, 0);
     const total = Number((( cartTotal + shipping.prix ).toFixed(2)));
     const user = useSelector(state => state.auth.user);
   
     const handleSubmit = async () => {
-        // event.preventDefault();
     
         if (!stripe || !elements) {
             return;
@@ -50,12 +53,12 @@ const CreditCardForm = ({shipping}) => {
             setError(payload.error);
         } else {
             const data = {
-                amount: total * 100,
+                amount: Math.round(total * 100),
                 currency: (process.env.REACT_APP_PAYMENT_CURRENCY && process.env.REACT_APP_PAYMENT_CURRENCY.toLowerCase()) || 'eur',
                 payment_method_types: [payload.paymentMethod.type],
             };
     
-            axios.post("http://localhost:4242/create-payment-intent", data)
+            axios.post("/paiement/intent/create", data)
                 .then(res => {
                     stripe.confirmCardPayment(res.data.client_secret, {
                         payment_method: {
@@ -66,9 +69,20 @@ const CreditCardForm = ({shipping}) => {
                             },
                         },
                     }).then(res => {
-                        // creer la commande et la facture
-                        console.log(res);
                         setProcessing(false);
+                        const newCommande = {
+                            ...commande,
+                            paiement: {
+                                idPaiement: res.paymentIntent.id,
+                                type: 'stripe',
+                                total: total,
+                                nom: `${user.nom} ${user.prenom}`,
+                                email: user.email,
+                                currency: data.currency.toUpperCase()
+                            },
+                            paid: true
+                        }
+                        dispatch(setCurrentCommande(newCommande));
                     }).catch(err => {
                         console.log(err);
                         setError("Une erreur est survenue");
@@ -92,13 +106,13 @@ const CreditCardForm = ({shipping}) => {
         <div className="credit-card-form">
             <div className="FormGroup">
                 <div className="FormRow">
-                    <label>Card number</label>
+                    <label>Numéro de carte</label>
                     <CardNumberElement onChange={onChange} />
                 </div>
         
                 <div className="FormRow">
                     <div className="FormCol">
-                        <label>Expiration date</label>
+                        <label>Date d'expiration</label>
                         <CardExpiryElement onChange={onChange} />
                     </div>
         
@@ -110,9 +124,6 @@ const CreditCardForm = ({shipping}) => {
             </div>
     
             {error && <div>{error.message}</div>}
-            {/* <button className="SubmitButton" type="submit" disabled={processing || !stripe}>
-                {processing ? "Processing..." : "Pay"}
-            </button> */}
             <BlueButton onClick={handleSubmit} style={{width: "100%"}}>
                 {processing ? "Traitement..." : "Payer Maintenant"}
             </BlueButton>

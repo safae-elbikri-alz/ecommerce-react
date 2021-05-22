@@ -1,11 +1,11 @@
 import React, { useEffect,useState } from 'react'
 import {StyledHero} from '../parts/StyledHero'
 import { MDBCol, MDBContainer, MDBRow } from 'mdbreact';
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import {loginVisible} from '../redux/app/appActions'
 import axios from 'axios';
 import '../form-register.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { registerUser } from '../redux/auth/authActions';
 
 function Register() {
     const dispatch = useDispatch();
@@ -48,12 +48,12 @@ function Register() {
             zip: e.target[3].value,
             pays : e.target[4].value,
             ville: e.target[5].value,
-            telephone: `${e.target[6].value} ${e.target[7].value}`,
+            telephone: e.target[7].value,
             email : e.target[8].value,
             password : e.target[9].value
         };
         
-        axios.post('/user/register', formData)
+        dispatch(registerUser(formData))
             .then((response) => {
                 setResponse({
                     completed: true,
@@ -113,7 +113,7 @@ function Register() {
                                 <p class="form-title-row"><h1>Créer votre compte</h1></p>
                                 <div className="form-row">
                                     <label htmlFor="defaultFormRegisterNameEx" className="grey-text">
-                                        <span>Nom</span>
+                                        <span>Nom  *</span>
                                     </label>
                                     <input 
                                         type="text" 
@@ -125,7 +125,7 @@ function Register() {
 
                                 <div className="form-row">
                                     <label htmlFor="defaultFormRegisterPrenomEx" className="grey-text">
-                                        <span> Prénom</span>
+                                        <span> Prénom  *</span>
                                     </label>
                                     <input 
                                         type="text" 
@@ -137,7 +137,7 @@ function Register() {
                                 
                                 <div className="form-row">
                                     <label htmlFor="defaultFormRegisterAdresseEx" className="grey-text">
-                                        <span> Adresse</span>
+                                        <span> Adresse  *</span>
                                     </label>
                                     <input 
                                         type="text" 
@@ -149,7 +149,7 @@ function Register() {
 
                                 <div className="form-row">
                                     <label htmlFor="defaultFormRegisterZipEx" className="grey-text">
-                                        <span>Code postal </span>
+                                        <span>Code postal *</span>
                                     </label>
                                     <input 
                                         type="text" 
@@ -161,7 +161,7 @@ function Register() {
 
                                 <div className="form-row">
                                     <label htmlFor="defaultFormRegisterPaysEx" className="grey-text">
-                                        <span> Pays de résidence</span>
+                                        <span> Pays de résidence  *</span>
                                     </label>
                                     <select 
                                         id="defaultFormRegisterPaysEx" 
@@ -181,7 +181,7 @@ function Register() {
 
                                 <div className="form-row">
                                     <label htmlFor="defaultFormRegisterVilleEx" className="grey-text">
-                                        <span> Ville de résidence</span>
+                                        <span> Ville de résidence  *</span>
                                     </label>
                                     <input 
                                         type="text" 
@@ -193,11 +193,11 @@ function Register() {
 
                                 <div className="form-row">
                                     <label htmlFor="defaultFormRegisterTelephoneEx" className="grey-text">
-                                        <span>Téléphone </span>
+                                        <span>Téléphone  *</span>
                                     </label>
                                     <input 
                                         type="text" 
-                                        style={{width: "65px"}} 
+                                        style={{width: "70px"}} 
                                         value={currentTelCode}
                                         disabled 
                                         required />
@@ -212,7 +212,7 @@ function Register() {
 
                                 <div className="form-row">
                                     <label htmlFor="defaultFormRegisterEmailEx" className="grey-text">
-                                        <span> Email</span>
+                                        <span> Email  *</span>
                                     </label>
                                     <input 
                                         type="email" 
@@ -223,7 +223,7 @@ function Register() {
                                 </div>
                                 <div className="form-row">
                                     <label htmlFor="defaultFormRegisterPasswordEx" className="grey-text">
-                                        <span> Mot de passe</span>
+                                        <span> Mot de passe  *</span>
                                     </label>
                                     <input 
                                         name="password"
@@ -234,7 +234,7 @@ function Register() {
                                 </div>
                                 <div className="form-row">
                                     <label htmlFor="defaultFormRegisterConfirmEx" className="grey-text">
-                                        <span>Confirmer le mot de passe </span>
+                                        <span>Confirmer le mot de passe  *</span>
                                     </label>
                                     <input 
                                         type="password" 
@@ -251,9 +251,9 @@ function Register() {
 
 
                                 <div className="form-row text-center">
-                                    <button className="button btn-disabled " type="submit">S'ENREGISTRER</button>
+                                    <button className="button btn-disabled registerBtn" type="submit">S'ENREGISTRER</button>
                                 </div>
-                                <button className="form-log-in-with-existing" onClick={()=>dispatch(loginVisible(true))}>Vous avez deja un compte ? Connectez vous &rarr;</button>
+                                <p className="form-log-in-with-existing" onClick={()=>dispatch(loginVisible(true))}>Vous avez deja un compte ? Connectez vous &rarr;</p>
                             </div>
                         </div>
                     </form>                   

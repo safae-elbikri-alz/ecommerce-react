@@ -10,7 +10,7 @@ function CheckoutNavigation({navigate,btnText}) {
     
     return (
         <div className="navigation-checkout">
-            <span onClick={()=>dispatch(fullPage(false))}><Link to='/cart' className="back-cart-link"><FaChevronLeft />Return to cart</Link></span>
+            <span onClick={()=>dispatch(fullPage(false))}><Link to='/cart' className="back-cart-link"><FaChevronLeft />Retourner au panier</Link></span>
             { 
                 navigate && btnText &&
                 <BlueButton onClick={navigate}>{btnText}</BlueButton>
