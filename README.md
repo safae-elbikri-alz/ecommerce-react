@@ -1,4 +1,4 @@
-# ecommerce-react
+# Ecommerce-react
 
 
 Ce projet ecommerce est réalisé en utilisant comme Backend une REST Api avec Spring boot et comme front-end la librairie REACT Js avec REDUX pour faciliter la gestion 
